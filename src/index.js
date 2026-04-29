@@ -28,3 +28,5 @@ sequelize.sync({ alter: true }).then(() => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
   });
 });
+
+module.exports = app; 
