@@ -22,7 +22,10 @@ jobs:
     - name: Instalar dependências
       run: npm install
 
+    - name: Corrigir binários do SQLite (Windows para Linux)
+      run: npm rebuild sqlite3
+
     - name: Executar Testes
-      run: node ./node_modules/jest/bin/jest.js --coverage
+      run: node ./node_modules/jest/bin/jest.js
       env:
         NODE_ENV: test
