@@ -23,7 +23,6 @@ jobs:
       run: npm install
 
     - name: Executar Testes
-      run: npm test
+      run: npx jest # Mudamos de 'npm test' para 'npx jest' para evitar erro de permissão
       env:
         NODE_ENV: test
-        PORT: 3000
