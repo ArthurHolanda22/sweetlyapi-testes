@@ -22,5 +22,8 @@ jobs:
     - name: Instalar dependências
       run: npm install
 
-    - name: Executar Testes de Integração e Unitários
+    - name: Executar Testes
       run: npm test
+      env:
+        NODE_ENV: test
+        PORT: 3000
