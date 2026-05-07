@@ -23,6 +23,6 @@ jobs:
       run: npm install
 
     - name: Executar Testes
-      run: npx jest # Mudamos de 'npm test' para 'npx jest' para evitar erro de permissão
+      run: node ./node_modules/jest/bin/jest.js --coverage
       env:
         NODE_ENV: test
