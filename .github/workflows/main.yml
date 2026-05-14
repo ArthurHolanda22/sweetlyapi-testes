@@ -1,31 +1,16 @@
 name: CI SweetlyAPI
-
-on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
-
+on: [push]
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Baixar código do repositório
-      uses: actions/checkout@v3
-
-    - name: Configurar Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-
-    - name: Instalar dependências
-      run: npm install
-
-    - name: Corrigir binários do SQLite (Windows para Linux)
-      run: npm rebuild sqlite3
-
-    - name: Executar Testes
-      run: node ./node_modules/jest/bin/jest.js
-      env:
-        NODE_ENV: test
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - run: npm install
+      - run: npm rebuild sqlite3
+      - name: Gerar Relatorio de Metricas
+        run: node ./node_modules/jest/bin/jest.js --coverage
+        env:
+          NODE_ENV: test
