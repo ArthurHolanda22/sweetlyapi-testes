@@ -1,14 +1,9 @@
-// Rotas responsáveis por criar e listar pedidos de entrega.
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const {
-  createOrder,
-  getOrders,
-  getOrdersByUser,
-} = require("../controllers/orderController");
+const orderController = require('../controllers/orderController');
 
-router.post("/create", createOrder);
-router.get("/", getOrders);
-router.get("/user/:userId", getOrdersByUser);
+// Define as rotas usando as funções que criamos no controlador
+router.post('/create', orderController.createOrder);
+router.get('/:id', orderController.getOrderById);
 
 module.exports = router;
